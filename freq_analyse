@@ -1,9 +1,22 @@
 #!/bin/bash
 
 awk '
-{ 
-    total += 1
-    map[$1] += 1
+BEGIN {
+    if (col != 0)
+    {
+        col -= 1
+    }
+}
+
+{
+    split($0, line, " ")
+    val = line[col]
+
+    if (val ~ /[a-zA-Z]/)
+    {
+        total += 1
+        map[val] += 1
+    }
 }
 
 END {
@@ -12,5 +25,5 @@ END {
         printf("%s %f\n", i, map[i] / total * 100)
     }
 }
-' | sort -rk2 | paste -d' ' - freq
+' col=$1 | sort -rk2 | paste -d' ' - freq
 

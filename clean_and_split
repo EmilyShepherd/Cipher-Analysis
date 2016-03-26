@@ -11,20 +11,17 @@ BEGIN {
     split($0, chars, "")
     for (i = 1; i <= length($0); i++)
     {
-        if (chars[i] ~ /[a-zA-Z]/)
-        {
-            printf("%s", toupper(chars[i]))
-            total++
+        printf("%s", toupper(chars[i]))
 
-            if (total == cols)
-            {
-                total = 0
-                printf("\n")
-            }
-            else
-            {
-                printf(" ")
-            }
+        total++
+        if (total == cols)
+        {
+            total = 0
+            printf("\n")
+        }
+        else
+        {
+            printf(" ")
         }
     }
 }
