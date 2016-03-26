@@ -1,0 +1,38 @@
+#!/bin/awk -f
+
+BEGIN {
+    chars = 1
+}
+
+{
+    split($0, line, " ")
+    for (i in line)
+    {
+        len = length(line[i])
+
+        sub(/[^a-zA-Z]/, "", line[i])
+        seen[line[i]][length(seen[line[i]])+1] = chars
+
+        chars += len
+    }
+}
+
+END {
+    for (i in seen)
+    {
+        if (length(seen[i]) > 1)
+        {
+            printf("%s:", i)
+            last = seen[i][1]
+
+            for (j = 2; j <= length(seen[i]); j++)
+            {
+                printf(" %d", seen[i][j] - last)
+
+                last = seen[i][j]
+            }
+
+            printf("\n")
+        }
+    }
+}
