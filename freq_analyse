@@ -2,15 +2,8 @@
 
 awk '
 { 
-    split($0, chars, "")
-    for (i=1; i <= length($0); i++)
-    {
-        if (chars[i] ~ /[a-zA-Z]/)
-        {
-            total += 1
-            map[toupper(chars[i])] += 1
-        }
-    }
+    total += 1
+    map[$1] += 1
 }
 
 END {

@@ -1,0 +1,12 @@
+#!/bin/awk -f
+
+{
+    split($0, chars, "")
+    for (i = 1; i <= length($0); i++)
+    {
+        if (chars[i] ~ /[a-zA-Z]/)
+        {
+            printf("%s\n", toupper(chars[i]))
+        }
+    }
+}
