@@ -1,0 +1,23 @@
+#!/bin/bash
+
+awk '
+{ 
+    split($0, chars, "")
+    for (i=1; i <= length($0); i++)
+    {
+        if (chars[i] ~ /[a-zA-Z]/)
+        {
+            total += 1
+            map[toupper(chars[i])] += 1
+        }
+    }
+}
+
+END {
+    for (i in map)
+    {
+        printf("%s %f\n", i, map[i] / total * 100)
+    }
+}
+' | sort -rk2 | paste -d' ' - freq
+
