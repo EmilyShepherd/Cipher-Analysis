@@ -14,13 +14,13 @@ while (++$i < strlen($message))
         switch (++$mode % 3)
         {
             case 0:
-                echo shift($message{$i}, 4);
+                echo shift($message{$i}, -22);
                 break;
             case 1:
-                echo shift($message{$i}, 22);
+                echo shift($message{$i}, -4);
                 break;
             case 2:
-                echo shift($message{$i}, 9);
+                echo shift($message{$i}, -17);
                 break;
         }
     }
