@@ -8,11 +8,10 @@ BEGIN {
     split($0, line, " ")
     for (i in line)
     {
-        len = length(line[i])
-
         sub(/[^a-zA-Z]/, "", line[i])
         seen[line[i]][length(seen[line[i]])+1] = chars
 
+        len = length(line[i])
         chars += len
     }
 }
@@ -25,7 +24,7 @@ END {
             printf("%s:", i)
             last = seen[i][1]
 
-            for (j = 2; j <= length(seen[i]); j++)
+            for (j = 1; j <= length(seen[i]); j++)
             {
                 printf(" %d", seen[i][j] - last)
 
