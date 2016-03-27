@@ -3,7 +3,7 @@
 
 \title{ELEC6242 Coursework Cryptoanalysis}
 \author{Emily Shepherd \\ ams2g11@ecs.soton.ac.uk}
-\date{LOL}
+\date{18th April 2016}
 \begin{document}
     \maketitle
 
@@ -15,6 +15,8 @@
 
     \section{Cipher 1}
 
+    \subsection{Solution}
+
     \begin{displayquote}
         The findings could lead to a better understanding of black hole
         mergers and galaxy evolution, and also help shed light on a
@@ -23,5 +25,44 @@
         models to predict what the final stages of a black hole merger
         look like, or even how long the process might take.
     \end{displayquote}
+
+    \subsection{Approach}
+
+    When first inspecting this cipher, my initial observation was that
+    it appeared as though spaces and other punctuation had been
+    preserved. This was because full stops and commas appear only
+    directly after a word, and sentences are all multiple words long.
+    The first letter of each sentence was also capitalised, and
+    quotation marks appeared to be logical. From this, I deduced that
+    the first course of investigation should assume that letters had
+    also not been moved, so I focused on substitution ciphers, rather
+    than transposition ciphers.
+
+    My first tactic was to use frequency analysis on the cipher; this
+    gave a result which was close to what would be expected from
+    English text. Although it was unclear if this was acceptable error,
+    or if there was more than one key in use, I decided to use perform
+    this analysis with various key lengths to check. Higher key lengths
+    of around 2-4 gave stronger results, leading me to suspect further
+    that a multiple shifts were being used.
+
+    Due to this conclusion, I suspected the Vigenere chipher may be in
+    use. As such, the next stage was to perform the Kasisky test to
+    attempt to find the key length. Using a scipt, I searched for
+    repeated words, and matched their distances between them. The main
+    words of interest were: xya and wru, both of which appeared three
+    times, each time at a distance a multiple of three.
+
+    From inspection, there are two one letter words in the cipher text:
+    e and r. The distance between the "e"s is a multiple three, whoever
+    this is not the case for the "r", suggesting the "r" corresponds to
+    a different letter in the key. As there are only two single letter
+    words in the English Language ("I" and "a"), the shift values could
+    be obtained from trail and improvement - I started by assuming both
+    of these were "a", as they were both lowercase. This turned out to
+    be correct, and revealed two thirds of the message. From there,
+    guessing the final shift was simple: as the text started with "?he",
+    I attempted a shift to create "The". This gave the fully decrypted
+    text.
 
 \end{document}
