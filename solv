@@ -1,0 +1,66 @@
+#!/bin/awk -f
+
+{
+    split($0, text, "")
+    mode = 0
+    pt = ""
+
+    for (i=1; i <= length($0); i++)
+    {
+        if (!(text[i] ~ /[a-zA-Z]/))
+        {
+            printf text[i]
+        }
+        else
+        {
+            if (mode % 2 == 0)
+            {
+                switch (text[i])
+                {
+                    case "e":
+                        printf "a"
+                        break
+                    case "k":
+                        printf "i"
+                        break
+                    case "j":
+                        printf "o"
+                        break
+                    case "P":
+                        printf "T"
+                        break
+                    case "p":
+                        printf "t"
+                        break
+                    case "v":
+                        printf "e"
+                        break
+                    default:
+                        printf "?"
+                }
+            }
+            else
+            {
+                switch (text[i])
+                {
+                    case "r":
+                        printf"a"
+                        break
+                    case "l":
+                        printf "h"
+                        break
+                    case "j":
+                        printf "t"
+                        break
+                    case "k":
+                        printf "s"
+                        break
+                    default:
+                        printf "?"
+                }
+            }
+
+            mode++
+        }
+    }
+}
