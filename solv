@@ -20,23 +20,8 @@
                     case "e":
                         printf "a"
                         break
-                    case "k":
-                        printf "i"
-                        break
-                    case "j":
-                        printf "o"
-                        break
-                    case "P":
-                        printf "T"
-                        break
-                    case "p":
-                        printf "t"
-                        break
-                    case "v":
-                        printf "e"
-                        break
                     default:
-                        printf "?"
+                        printf "1"
                 }
             }
             else
@@ -46,17 +31,11 @@
                     case "r":
                         printf"a"
                         break
-                    case "l":
-                        printf "h"
-                        break
                     case "j":
-                        printf "t"
-                        break
-                    case "k":
-                        printf "s"
+                        printf"e"
                         break
                     default:
-                        printf "?"
+                        printf "2"
                 }
             }
 
