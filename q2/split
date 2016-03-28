@@ -7,8 +7,6 @@ $cipher = file_get_contents('cipher');
 $mode = 0;
 for ($i = 0; $i < strlen($cipher); $i++)
 {
-    if ($cipher{$i} === "\n") continue;
-
     echo $cipher{$i};
 
     if ($mode++ % $num == ($num - 1))
