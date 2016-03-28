@@ -1,0 +1,15 @@
+#!/bin/php
+<?php
+
+$rails       = isset($argv[1]) ? $argv[1] : 1;
+$start       = isset($argv[2]) ? $argv[2] : 0;
+$cipher      = file_get_contents('cipher');
+$rail_length = (int)floor(strlen(trim($cipher)) / $rails);
+
+for ($i = $start; $i < $rail_length; $i += $rails)
+{
+    for ($j = 0; $j < $rails; $j++)
+    {
+        echo $cipher{$i + $j * (1 + $rail_length)};
+    }
+}
